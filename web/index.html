@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Fitness System</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<div id="statsPanel" class="panel hidden">
+		<div class="panel-header">
+			<h1>Fitness</h1>
+			<button id="closeButton" type="button">×</button>
+		</div>
+
+		<div id="statsList" class="stats-list"></div>
+	</div>
+
+	<div id="trainingBox" class="training-box hidden">
+		<div id="trainingLabel" class="training-label">Training...</div>
+		<div class="progress-bg">
+			<div id="trainingProgress" class="progress-fill"></div>
+		</div>
+	</div>
+
+	<div id="xpPopup" class="xp-popup hidden">
+		<div id="xpTitle" class="xp-title">+0 XP</div>
+		<div id="xpDetails" class="xp-details">Level 1</div>
+		<div class="xp-popup-progress-bg">
+			<div id="xpPopupProgressFill" class="xp-popup-progress-fill"></div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+
+</html>
