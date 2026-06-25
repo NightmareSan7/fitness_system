@@ -18,19 +18,6 @@ function fitnessSystem.Client.BuildDefaultStats()
 	return stats
 end
 
----Returns the configured max level for a stat.
----@param stat FitnessStatName
----@return number
-function fitnessSystem.Client.GetMaxLevel(stat)
-	local statConfig = fitnessSystem.Config.Stats[stat]
-
-	if not statConfig then
-		return 1
-	end
-
-	return #statConfig.requiredXP
-end
-
 ---Returns required XP for a stat level.
 ---@param stat FitnessStatName
 ---@param level number
@@ -50,7 +37,7 @@ end
 ---@param level number
 ---@return boolean
 function fitnessSystem.Client.IsMaxLevel(stat, level)
-	local maxLevel = fitnessSystem.Client.GetMaxLevel(stat)
+	local maxLevel = fitnessSystem.Shared.Helpers.GetMaxLevel(stat)
 	local requiredXp = fitnessSystem.Client.GetRequiredXpForLevel(stat, level)
 
 	return level >= maxLevel or requiredXp <= 0
@@ -64,7 +51,7 @@ function fitnessSystem.Client.BuildNuiStat(stat, data)
 	local statConfig = fitnessSystem.Config.Stats[stat]
 	local level = tonumber(data.level) or 1
 	local xp = tonumber(data.xp) or 0
-	local maxLevel = fitnessSystem.Client.GetMaxLevel(stat)
+	local maxLevel = fitnessSystem.Shared.Helpers.GetMaxLevel(stat)
 	local requiredXp = fitnessSystem.Client.GetRequiredXpForLevel(stat, level)
 
 	return {

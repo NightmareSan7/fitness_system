@@ -85,8 +85,11 @@ local function startTraining(spot)
 		return
 	end
 
+	isTraining = true
+
 	ESX.TriggerServerCallback('fitness_system:server:canStartTraining', function(canStart, reason, cooldownLeft)
 		if not canStart then
+			isTraining = false
 			if reason == 'cooldown' then
 				cooldownLeft = tonumber(cooldownLeft) or 0
 				setLocalCooldown(spot.type, cooldownLeft)
@@ -105,8 +108,6 @@ local function startTraining(spot)
 			)
 			return
 		end
-
-		isTraining = true
 
 		local ped = PlayerPedId()
 		local endTime = GetGameTimer() + spot.duration
@@ -167,5 +168,19 @@ CreateThread(function()
 		end
 
 		Wait(sleep)
+	end
+end)
+
+
+AddEventHandler('onResourceStop', function(resourceName)
+	if GetCurrentResourceName() ~= resourceName then
+		return
+	end
+
+	if isTraining then
+		local ped = PlayerPedId()
+		ClearPedTasksImmediately(ped)
+		FreezeEntityPosition(ped, false)
+		isTraining = false
 	end
 end)

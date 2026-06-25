@@ -83,5 +83,5 @@ function fitnessSystem.Server.Repository.UpsertStat(identifier, stat, level, xp)
 		{ identifier, stat, level, xp }
 	)
 
-	return affectedRows ~= nil
+	return affectedRows ~= nil and affectedRows >= 0
 end

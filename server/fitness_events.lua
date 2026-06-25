@@ -4,7 +4,10 @@ local errorMessages = {
             tonumber(result.cooldownLeft) or 0
         )
     end,
-
+    max_level = function(result)
+        return ('Du hast bereits das Maximale Level %d bei %s erreicht.'):format(tonumber(result.maxLevel) or 0,
+            result.statName)
+    end,
     too_far = 'Player is too far away from the training spot.',
     invalid_spot = 'Invalid training spot.',
     invalid_stat = 'Invalid training stat.',
@@ -67,7 +70,7 @@ AddEventHandler('onResourceStart', function(resourceName)
 
             if src then
                 fitnessSystem.Server.Service.ClearPlayer(src)
-                
+
                 if xPlayer and xPlayer.identifier then
                     sendFitnessStats(src, xPlayer.identifier)
                 end

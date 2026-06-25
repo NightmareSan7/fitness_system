@@ -39,7 +39,9 @@
 ---@class TrainingProcessResult
 ---@field ok boolean
 ---@field reason string|nil
----@field cooldownLeft number|nil
+---@field cooldownLeft number|nil if cooldown exists
+---@field statName string|nil if reached maxlevel
+---@field maxLevel number|nil if reached maxlevel
 ---@field stat FitnessStatName|nil
 ---@field level number|nil
 ---@field xp number|nil

@@ -15,7 +15,7 @@ local function startStaminaThread()
 	staminaThreadActive = true
 
 	CreateThread(function()
-		local maxLevel = fitnessSystem.Client.GetMaxLevel(fitnessSystem.Constant.Stat.Stamina)
+		local maxLevel = fitnessSystem.Shared.Helpers.GetMaxLevel(fitnessSystem.Constant.Stat.Stamina)
 		while staminaThreadActive do
 			local level = tonumber(currentStaminaLevel) or 1
 

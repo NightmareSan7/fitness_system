@@ -7,13 +7,15 @@ version '1.0.0'
 
 dependencies {
 	'es_extended',
-	'oxmysql'
+	'oxmysql',
+	'esx_notify'
 }
 
 shared_scripts {
 	'@es_extended/imports.lua',
 	'class_types.lua',
-	'config.lua'
+	'config.lua',
+	'shared/helpers.lua'
 }
 client_scripts {
 	'client/main.lua',
